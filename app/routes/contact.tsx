@@ -5,7 +5,7 @@ import { Form, useActionData, useNavigation } from "@remix-run/react";
 import type { ActionFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import nodemailer from "nodemailer";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Action function remains unchanged
 export const action: ActionFunction = async ({ request }) => {
@@ -23,14 +23,14 @@ export const action: ActionFunction = async ({ request }) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "vdeekshithkumar@gmail.com",
-      pass: "uoeg mpse swye hlpa", 
+      user: "nikhilstudio1996@gmail.com",
+      pass: "rxgh eltk mqlh kesj", 
     },
   });
 
   const mailOptions = {
-    from: "vdeekshithkumar@gmail.com",
-    to: "vdeekshithkumar@gmail.com",
+    from: "nikhilstudio1996@gmail.com",
+    to: "nikhilstudio1996@gmail.com",
     subject: `New Contact Form Submission from ${firstname} ${lastname}`,
     text: `
       Name: ${firstname} ${lastname}
@@ -60,26 +60,20 @@ export const action: ActionFunction = async ({ request }) => {
 export default function Contact() {
   const actionData = useActionData<{ success?: string; error?: string }>();
   const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+  const formRef = useRef<HTMLFormElement>(null); // Ref to access the form DOM element
+  const [showSuccess, setShowSuccess] = useState(false)
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const handleSubmit = async (event:any) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulating an API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-
-      // Optionally, reset the form after submission
-      event.target.reset();
-
-      // Hide the success message after 3 seconds
-      setTimeout(() => setIsSuccess(false), 3000);
-    }, 2000);
-  };
+  useEffect(() => {
+    if (actionData?.success && formRef.current) {
+      formRef.current.reset(); // Reset the form
+      setShowSuccess(true); // Show the success message
+      const timer = setTimeout(() => {
+        setShowSuccess(false); // Hide the success message after 3 seconds
+      }, 2000); // Adjust the duration (3000ms = 3 seconds)
+      return () => clearTimeout(timer); // Cleanup the timeout on unmount or re-run
+    }
+  }, [actionData]);
 
   return (
     <>
@@ -198,8 +192,8 @@ export default function Contact() {
           {/* Right Column: Form */}
           <div className="w-full md:w-1/2">
             <Form
-              onSubmit={handleSubmit}
               method="post"
+              ref={formRef}
               className="space-y-4 sm:space-y-6 bg-gray-800/80 backdrop-blur-lg p-4 sm:p-6 rounded-xl shadow-lg"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -291,6 +285,17 @@ export default function Contact() {
                   "Send Message"
                 )}
               </button>
+
+              {showSuccess && (
+                <p className="text-green-400 text-sm sm:text-base">
+                  {actionData?.success}
+                </p>
+              )}
+              {actionData?.error && (
+                <p className="text-red-400 text-sm sm:text-base">
+                  {actionData.error}
+                </p>
+              )}
             </Form>
           </div>
         </div>
