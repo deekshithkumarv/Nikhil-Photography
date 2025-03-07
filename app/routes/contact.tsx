@@ -138,7 +138,7 @@ export default function Contact() {
         <p className="text-xs sm:text-base leading-relaxed">
           <strong>Location:</strong> Nikhil Digital Studio & Video
           <br />
-          Ground Floor, Milagres Centre Building, Opp. Pinky Fashions,
+          Milagres cross road, Opp. Pinky Fashions,
           Hampankatta, Mangaluru, Karnataka 575001, India
         </p>
         <p className="text-xs sm:text-base leading-relaxed">
@@ -147,7 +147,7 @@ export default function Contact() {
           <strong>Email:</strong> nikhilstudio1996@gmail.com
         </p>
         <p className="text-xs sm:text-base text-gray-600 italic">
-          We’re open Monday to Saturday, 9 AM - 6 PM. Walk-ins welcome, or book
+          We’re open Monday to Sunday, 7:30 AM - 7:30 PM. Walk-ins welcome, or book
           an appointment for a personalized consultation!
         </p>
       </div>
