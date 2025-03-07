@@ -91,7 +91,7 @@ export const Footer = () => {
         </div>
         <div className="mb-2 flex items-center text-sm sm:text-base font-light tracking-wider text-light-text-color">
           <FaClock className="mr-2 w-5 sm:w-6 flex-none text-primary-color" />
-          <span>Mon - Fri: 9:00am - 5:00pm</span>
+          <span>Mon - Sun: 7:30am - 7:30pm</span>
         </div>
       </div>
     </div>
