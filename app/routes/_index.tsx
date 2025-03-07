@@ -217,8 +217,8 @@ export default function Index() {
             />
             <div className="absolute bottom-0 right-0 h-2/5 w-1/2 bg-white pl-3 pt-3">
               <div className="flex h-full w-full flex-col items-center justify-center bg-red-700 p-10 text-white">
-                <div className="mb-2 text-6xl font-bold">20+</div>
-                <div>Years in Photography</div>
+                <div className="mb-2 text-6xl font-bold">30+</div>
+                <div>Years in Photography and Videography</div>
               </div>
             </div>
           </motion.div>
