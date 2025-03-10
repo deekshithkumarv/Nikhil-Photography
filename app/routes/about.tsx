@@ -4,6 +4,7 @@ import { textVariants, containerVariants } from "~/data/animationConfig";
 import Wedding1 from "../../public/assets/images/wedding1.jpg";
 import Haldi from "../../public/assets/images/haldi.jpg";
 import Reception from "../../public/assets/images/reception.jpeg";
+import Nikhil from "../../public/assets/nikhil/nikhil the boss.jpeg";
 
 export default function About() {
   const bgImages = [Wedding1, Haldi, Reception];
@@ -91,7 +92,7 @@ export default function About() {
       className="relative w-full h-64 sm:h-80 md:h-[450px] bg-gray-200 rounded-lg overflow-hidden shadow-lg"
     >
       <img
-        src="/path-to-your-photo.jpg"
+        src={Nikhil}
         alt="Meet Nikhil, Wedding Photographer"
         className="w-full h-full object-cover rounded-lg"
       />
